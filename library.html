@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>library</title>
+</head>
+<body>
+    <script>
+        var _ = {
+            map: function( a , f ){ 
+                for ( i in a ) {
+                    a[i] = f(a[i]);
+                }
+                
+                return a;
+            },
+            reduce: function( a , f , m ){ 
+                var i;
+                
+                if(!m) {
+                    m = a[0];
+                    i = 1;
+                } else { i = 0; }
+                
+                for ( ; i < a.length ; i++ ){
+                    m = f( m , a[i] );
+                } 
+                return m;
+            },
+            find: function( a , f ){ 
+                for ( i in a ){
+                    if ( f( a[i] ) ){
+                        return a[i];
+                    }
+                } return undefined;
+            },
+            filter: function( a , f ){ 
+                var r = [];
+                for ( i in a ){
+                    if ( f( a[i] ) ){
+                        r.push(a[i]);
+                    }
+                } return r;
+            },
+            reject: function( a , f ){
+                var r = [];
+                for ( i in a ){
+                    if ( !f( a[i] ) ){
+                        r.push(a[i]);
+                    }
+                } return r;
+            }
+         }
+
+         var j = _.map([1, 2, 3], function(num){ return num * 3; });
+
+        // var evens = _.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; }); //should return [2, 4, 6] after you finish implementing the code above
+
+    </script>
+</body>
+</html>
